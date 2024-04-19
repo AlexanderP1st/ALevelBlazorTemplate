@@ -1,7 +1,7 @@
-using ALevelBlazorTemplate.Components;
-using ALevelBlazorTemplate.Components.Account;
-using ALevelBlazorTemplate.Context;
-using ALevelBlazorTemplate.Model;
+using MyCheeseShop.Components;
+using MyCheeseShop.Components.Account;
+using MyCheeseShop.Context;
+using MyCheeseShop.Model;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 
@@ -26,6 +26,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddDbContext<DatabaseContext>();
 
 builder.Services.AddIdentityCore<User>()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddSignInManager();
 
@@ -50,3 +51,5 @@ app.MapRazorComponents<App>()
 app.MapAdditionalAccountRoutes();
 
 app.Run();
+
+builder.Services.AddScoped<ShoppingCart>();
