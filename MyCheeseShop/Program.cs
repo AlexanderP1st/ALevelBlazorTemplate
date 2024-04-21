@@ -30,7 +30,12 @@ builder.Services.AddIdentityCore<User>()
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddSignInManager();
 
+builder.Services.AddScoped<DatabaseSeeder>();
+
 var app = builder.Build();
+using var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetService<DatabaseSeeder>();
+await seeder!.Seed();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -53,3 +58,4 @@ app.MapAdditionalAccountRoutes();
 app.Run();
 
 builder.Services.AddScoped<ShoppingCart>();
+builder.Services.AddScoped<CheeseProvider>();
