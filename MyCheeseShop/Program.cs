@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddScoped<ShoppingCart>();
+builder.Services.AddScoped<CheeseProvider>();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -56,6 +57,3 @@ app.MapRazorComponents<App>()
 app.MapAdditionalAccountRoutes();
 
 app.Run();
-
-builder.Services.AddScoped<ShoppingCart>();
-builder.Services.AddScoped<CheeseProvider>();

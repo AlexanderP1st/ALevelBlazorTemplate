@@ -12,7 +12,7 @@ namespace MyCheeseShop.Context
             _context = context;
         }
 
-        public async Task<List<Cheese>> GetCheesesAsync()
+        public async Task<List<Cheese>> GetAllCheesesAsync()
         {
             return await _context.Cheeses.OrderBy(CheeseProvider => CheeseProvider.Name).ToListAsync();
         }
