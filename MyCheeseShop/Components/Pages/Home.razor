@@ -13,13 +13,13 @@ else if (!cheeses.Any())
     <p>No cheeses found</p>
 }
 
-@foreach (var cheese in FilteredCheeses)
+@foreach (var cheese in cheeses)
 {
     <div class="col">
         <StoreItem Cheese="cheese" />
     </div>
 }
-@if (!FilteredCheeses.Any())
+@if (!cheeses.Any())
 {
     <p>No cheeses found</p>
 }
