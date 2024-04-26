@@ -64,7 +64,7 @@ namespace MyCheeseShop.Context
                  new Cheese { Name = "Gouda", Type = "Semi-Hard", Description = "A Dutch cheese known for its nutty flavor and smooth texture.", Strength = "Medium", Price = 8.75m },
                  new Cheese { Name = "Roquefort", Type = "Blue", Description = "A French blue cheese made from sheep's milk.", Strength = "Strong", Price = 15.25m },
                  new Cheese { Name = "Mozzarella", Type = "Soft", Description = "An Italian cheese known for its stretchy texture and mild flavor.", Strength = "Mild", Price = 9.99m },
-                 new Cheese { Name = "Gruyère", Type = "Hard", Description = "A Swiss cheese with a rich, nutty flavor.", Strength = "Medium", Price = 14.75m },
+                 new Cheese { Name = "Gruyère", Type = "Hard", Description = "A Swiss cheese with a rich, nutty flavor. ", Strength = "Medium", Price = 14.75m },
                  new Cheese { Name = "Camembert", Type = "Soft", Description = "A French cheese similar to Brie, but with a stronger flavor.", Strength = "Medium", Price = 11.25m },
                  new Cheese { Name = "Parmesan", Type = "Hard", Description = "A hard Italian cheese used for grating.", Strength = "Strong", Price = 13.99m },
                  new Cheese { Name = "Emmental", Type = "Hard", Description = "A Swiss cheese with characteristic holes and a mild, nutty flavor.", Strength = "Medium", Price = 10.50m },

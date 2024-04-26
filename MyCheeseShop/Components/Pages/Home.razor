@@ -1,9 +1,12 @@
 ﻿@page "/"
 @using MyCheeseShop.Context
 @using MyCheeseShop.Model
+@using MyCheeseShop.Components
+
 @inject CheeseProvider CheeseProvider
 <PageTitle>Home</PageTitle>
 
+<input type="text" class="form-control" placeholder="Search for cheese..." @bind:event="oniput">
 @if (cheeses is null)
 {
     <p>Loading...</p>
@@ -13,18 +16,22 @@ else if (!cheeses.Any())
     <p>No cheeses found</p>
 }
 
-@foreach (var cheese in cheeses)
-{
-    <div class="col">
-        <StoreItem Cheese="cheese" />
-    </div>
-}
-@if (!cheeses.Any())
+<div class="row">
+    @foreach (var cheese in Filteredcheeses)
+    {
+        <div class="col-md-3">
+            <StoreItem Cheese="cheese" />
+        </div>
+    }
+</div>
+
+@if (!Filteredcheeses.Any())
 {
     <p>No cheeses found</p>
 }
 @code {
     private IEnumerable<Cheese> cheeses;
+    
 
     protected override async Task OnInitializedAsync()
     {
