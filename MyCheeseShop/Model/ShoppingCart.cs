@@ -2,6 +2,23 @@
 {
     public class ShoppingCart
     {
-        public List<OrderItem> Items { get; set; } = new List<OrderItem>();
+        public event Action? OnCartUpdated;
+        private List<CartItem> _items;
+
+        public ShoppingCart()
+        {
+            _items = [];
+
+        }
+
+        public void AddItem(Cheese cheese, int quantity)
+        {
+            var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
+            if (item is null)
+                _items.Add(new CartItem { Cheese = cheese, Quanitity = quantity });
+            else
+                item.Quanitity += quantity;
+            OnCartUpdated?.Invoke();
+        }
     }
 }
