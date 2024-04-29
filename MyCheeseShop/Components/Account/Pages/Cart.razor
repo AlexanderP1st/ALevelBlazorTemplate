@@ -1,0 +1,46 @@
+﻿@page "/cart"
+
+@using MyCheeseShop.Model
+@inject ShoppingCart ShoppingCart
+@inject NaviagationManager NaigationManager
+
+
+
+<PageTitle>Cart</PageTitle>
+
+@if (ShoppingCart.Count() == 0)
+{
+    <h2>ShoppingCart</h2>
+    <p>Your Cart Is Empty</p>
+    <div> 
+        <button @onclick="GoToStore" class="btn btn-outline-succsess">Back To Cheese</button>
+    </div>
+}
+else
+{
+    <div class="d-flex justify-content-between">
+        <div>
+            <h2>Shopping Cart</h2>
+        </div>
+        <div>
+            <a @onclick="GoToCheckout" class="btn btn-outline-success">Checkout</a>
+        </div>
+    </div>
+    <CartSummary IsEditable="true"/>
+}
+
+@code 
+{
+    protected override void OnInitialized()
+    {
+        ShoppingCart.OnCartUpdated += StateHasChanged;
+    }
+    private void GoToStore()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+    private void GoToCheckout()
+    {
+        NavigationManager.NavigateTo("/checkout");
+    }
+}

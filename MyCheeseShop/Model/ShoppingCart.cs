@@ -14,11 +14,22 @@
         public void AddItem(Cheese cheese, int quantity)
         {
             var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
-            if (item is null)
+            if (item == null)
+            {
                 _items.Add(new CartItem { Cheese = cheese, Quanitity = quantity });
+            }
             else
+            {
                 item.Quanitity += quantity;
+            }
             OnCartUpdated?.Invoke();
         }
+
+        public IEnumerable<CartItem> GetItems()
+        {
+            return _items;
+        }
+
+
     }
 }

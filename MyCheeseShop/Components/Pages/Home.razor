@@ -2,6 +2,7 @@
 @using MyCheeseShop.Context
 @using MyCheeseShop.Model
 @using MyCheeseShop.Components
+@inject NavigationManager NavigationManager
 @inject ShoppingCart ShoppingCart
 
 @inject CheeseProvider CheeseProvider
@@ -62,6 +63,10 @@ else if (!cheeses.Any())
         || cheese.Description.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
         || cheese.Strength.Contains(searchTerm, StringComparison.OrdinalIgnoreCase);
 
+    }
+    private void GoToCart()
+    {
+        NavigationManager.NavigateTo("/cart");
     }
 }
 

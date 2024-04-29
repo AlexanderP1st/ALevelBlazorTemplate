@@ -1,7 +1,11 @@
-﻿@using MyCheeseShop.Model
-
+﻿@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@using MyCheeseShop.Model
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject ShoppingCart ShoppingCart
 
 <EditForm Model="quantity" OnSubmit="AddToCart">
+
+ 
     <div class="row"> 
         <div class="card" style="width: 22rem;">
             <img src="/img/@Cheese.ImageUrl" class="card-img-top p-1 " alt="@Cheese.Name" onerror="this.onerror = null; this.src='/img/no_cheese.png'">
@@ -31,7 +35,8 @@
         </div>
     </div>
 </EditForm>
-@code {
+@code 
+{
     [Parameter]
     public Cheese Cheese { get; set; }
 
@@ -39,6 +44,7 @@
 
     public async Task AddToCart()
     {
-        
+        ShoppingCart.AddItem(Cheese, quantity);
+        await ProtectedSessionStore.SetAsync("cart", ShoppingCart.GetItems());
     }
 }
