@@ -3,38 +3,40 @@
 @inject ProtectedSessionStorage ProtectedSessionStore
 @inject ShoppingCart ShoppingCart
 
-<EditForm Model="quantity" OnSubmit="AddToCart">
+
 
  
-    <div class="row"> 
-        <div class="card" style="width: 22rem;">
-            <img src="/img/cheeses/@Cheese.ImageUrl" class="card-img-top p-1 " alt="@Cheese.Name" onerror="this.onerror = null; this.src='/img/no_cheese.png'">
+ <div class="row"> 
+    <div class="card" style="width: 22rem;">
+      <img src="/img/cheeses/@Cheese.ImageUrl" class="card-img-top p-1 " alt="@Cheese.Name" onerror="this.onerror = null; this.src='/img/no_cheese.png'">
 
-            <div class="card-body">
-                <h5>
+        <div class="card-body">
+           <h5>
                     <span class="badge rounded-pill text-bg-danger">@Cheese.Type</span>
                     <span class="badge rounded-pill text-bg-success">@Cheese.Strength</span>
-                </h5>
+            </h5>
                 
                 <h3 class="card-title">@Cheese.Name</h3>
                 <h5><span class="badge rounded-pill text-bg-danger">£@Cheese.Price</span></h5>
                 <p class="card-text">@Cheese.Description</p>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Weight
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">100g</a></li>
-                        <li><a class="dropdown-item" href="#">200g</a></li>
-                        <li><a class="dropdown-item" href="#">500g</a></li>
-                    </ul>
+                <div class="mt-auto">
+                <EditForm Model="quantity" OnSubmit="AddToCart">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <InputSelect class="form-select w-100" @bind-Value="quantity" required>
+                            @for (var i = 1; i <= 5; i++)
+                            {
+                                <option value="@i">@(i * 100)g</option>
+                            }
+                        </InputSelect>
+                    </div>
                 </div>
-
-                 <a href="#" class="btn btn-outline-success" @onclick=AddToCart>Buy</a>
+                </EditForm>
+                <a href="#" class="btn btn-outline-success" @onclick=AddToCart>Buy</a>
             </div>
         </div>
     </div>
-</EditForm>
+ </div>
 @code 
 {
     [Parameter]
