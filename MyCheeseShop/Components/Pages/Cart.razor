@@ -2,7 +2,7 @@
 
 @using MyCheeseShop.Model
 @inject ShoppingCart ShoppingCart
-@inject NaviagationManager NaigationManager
+@inject NavigationManager NavigationManager
 
 
 
@@ -13,7 +13,7 @@
     <h2>ShoppingCart</h2>
     <p>Your Cart Is Empty</p>
     <div> 
-        <button @onclick="GoToStore" class="btn btn-outline-succsess">Back To Cheese</button>
+        <button @onclick="GoToCart" class="btn btn-outline-succsess">Back To Cheese</button>
     </div>
 }
 else
@@ -35,7 +35,7 @@ else
     {
         ShoppingCart.OnCartUpdated += StateHasChanged;
     }
-    private void GoToStore()
+    private void GoToCart()
     {
         NavigationManager.NavigateTo("/");
     }

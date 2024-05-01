@@ -30,6 +30,12 @@
             return _items;
         }
 
+        public int Count()
+        {
+            
+            return _items.Count;
+        }
+
 
     }
 }
