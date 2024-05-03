@@ -13,5 +13,7 @@ namespace MyCheeseShop.Model
         public DataSetDateTime Created {get; set;}
 
         public OrderStatus Status {get; set;}
+
+        public decimal Total => Items.Sum(item => item.Cheese.Price * item.Quantity);
      }
 }

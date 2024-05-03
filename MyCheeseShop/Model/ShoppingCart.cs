@@ -16,11 +16,11 @@
             var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
             if (item == null)
             {
-                _items.Add(new CartItem { Cheese = cheese, Quanitity = quantity });
+                _items.Add(new CartItem { Cheese = cheese, Quantity = quantity });
             }
             else
             {
-                item.Quanitity += quantity;
+                item.Quantity += quantity;
             }
             OnCartUpdated?.Invoke();
         }
@@ -36,6 +36,12 @@
             return _items.Count;
         }
 
+        public int GetQuantity(Cheese cheese)
+        {
+            var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
+            return item?.Quantity ?? 0;
+        }
+        
 
     }
 }

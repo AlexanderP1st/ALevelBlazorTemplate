@@ -13,7 +13,7 @@
     <h2>ShoppingCart</h2>
     <p>Your Cart Is Empty</p>
     <div> 
-        <button @onclick="GoToCart" class="btn btn-outline-succsess">Back To Cheese</button>
+        <button @onclick="GoToStore" class="btn btn-outline-succsess">Back To Cheese</button>
     </div>
 }
 else
@@ -23,7 +23,7 @@ else
             <h2>Shopping Cart</h2>
         </div>
         <div>
-            <a @onclick="GoToCheckout" class="btn btn-outline-success">Checkout</a>
+            <button @onclick="GoToCheckout" class="btn btn-outline-success">Checkout</button>
         </div>
     </div>
     <CartSummary IsEditable="true"/>
@@ -35,7 +35,7 @@ else
     {
         ShoppingCart.OnCartUpdated += StateHasChanged;
     }
-    private void GoToCart()
+    private void GoToStore()
     {
         NavigationManager.NavigateTo("/");
     }
