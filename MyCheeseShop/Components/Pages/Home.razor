@@ -4,11 +4,18 @@
 @using MyCheeseShop.Components
 @inject NavigationManager NavigationManager
 @inject ShoppingCart ShoppingCart
-
 @inject CheeseProvider CheeseProvider
+
 <PageTitle>Home</PageTitle>
 
-<input type="text" class="form-control" placeholder="Search for cheese..." @bind:event="oniput">
+
+
+<div>
+    <input type="text" class="form-control" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
+</div>
+
+<br />
+
 @if (cheeses is null)
 {
     <p>Loading...</p>
@@ -19,7 +26,7 @@ else if (!cheeses.Any())
 }
 
 
- <a @onclick="GoToCart" class="btn btn-outline-primary">Go To Cart (@ShoppingCart.Count())</a>
+ <a @onclick="GoToCart" class="btn btn-outline-danger">Go To Cart (@ShoppingCart.Count())</a>
  
 
 

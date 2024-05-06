@@ -60,11 +60,11 @@ namespace MyCheeseShop.Context
               return
                 [
                  new Cheese { Name = "Cheddar", Type = "Hard", Description = "A sharp, aged cheese originating in England.", Strength = "Strong", Price = 10.99m , ImageUrl= "Cheddar.jpg"},
-                 new Cheese { Name = "Brie", Type = "Soft", Description = "A creamy cheese originating in France.", Strength = "Mild", Price = 12.50m ,ImageUrl= "brie.jpg"},
+                 new Cheese { Name = "Brie", Type = "Soft", Description = "A creamy cheese originating in France.", Strength = "Mild", Price = 12.50m ,ImageUrl= "Brie.jpg"},
                  new Cheese { Name = "Gouda", Type = "Semi-Hard", Description = "A Dutch cheese known for its nutty flavor and smooth texture.", Strength = "Medium", Price = 8.75m ,ImageUrl="Gouda.jpg"},
                  new Cheese { Name = "Roquefort", Type = "Blue", Description = "A French blue cheese made from sheep's milk.", Strength = "Strong", Price = 15.25m  ,ImageUrl="Roquefort.jpg"},
                  new Cheese { Name = "Mozzarella", Type = "Soft", Description = "An Italian cheese known for its stretchy texture and mild flavor.", Strength = "Mild", Price = 9.99m ,ImageUrl="Mozzarella.jpg"},
-                 new Cheese { Name = "Gruyère", Type = "Hard", Description = "A Swiss cheese with a rich, nutty flavor. ", Strength = "Medium", Price = 14.75m ,ImageUrl="Gruyere.jpg"},
+                 new Cheese { Name = "Gruyère", Type = "Hard", Description = "A Swiss cheese with a rich, nutty flavor. ", Strength = "Medium", Price = 14.75m ,ImageUrl="Gruyère.jpg"},
                  new Cheese { Name = "Camembert", Type = "Soft", Description = "A French cheese similar to Brie, but with a stronger flavor.", Strength = "Medium", Price = 11.25m ,ImageUrl="Camembert.jpg"},
                  new Cheese { Name = "Parmesan", Type = "Hard", Description = "A hard Italian cheese used for grating.", Strength = "Strong", Price = 13.99m ,ImageUrl="Parmesan.jpg" },
                  new Cheese { Name = "Emmental", Type = "Hard", Description = "A Swiss cheese with characteristic holes and a mild, nutty flavor.", Strength = "Medium", Price = 10.50m ,ImageUrl="Emmental.jpg"},
@@ -76,9 +76,9 @@ namespace MyCheeseShop.Context
                  new Cheese { Name = "Monterey Jack", Type = "Semi-Hard", Description = "An American cheese with a mild flavor and smooth texture.", Strength = "Mild", Price = 9.50m  ,ImageUrl="Monterey Jack.jpg"},
                  new Cheese { Name = "Pepper Jack", Type = "Semi-Hard", Description = "A variation of Monterey Jack cheese with spicy peppers added.", Strength = "Medium", Price = 10.25m  ,ImageUrl="Pepper Jack.jpg"},
                  new Cheese { Name = "Swiss", Type = "Hard", Description = "A Swiss cheese with a sweet, nutty flavor and characteristic holes.", Strength = "Medium", Price = 12.99m ,ImageUrl="Swiss.jpg" },
-                 new Cheese { Name = "Blue Cheese", Type = "Blue", Description = "A general term for cheeses inoculated with Penicillium mold cultures, resulting in a blue or green vein.", Strength = "Strong", Price = 14.99m ,ImageUrl="blue cheese.jpg"},
+                 new Cheese { Name = "Blue Cheese", Type = "Blue", Description = "A general term for cheeses inoculated with Penicillium mold cultures, resulting in a blue or green vein.", Strength = "Strong", Price = 14.99m ,ImageUrl="Blue Cheese.jpg"},
                  new Cheese { Name = "Gorgonzola", Type = "Blue", Description = "An Italian blue cheese with a creamy texture and tangy flavor.", Strength = "Strong", Price = 16.50m  ,ImageUrl="Gorgonzola.jpg"},
-                  new Cheese { Name = "Boursin", Type = "Soft", Description = "A French cheese flavored with herbs and spices, known for its creamy texture.", Strength = "Mild", Price = 11.99m ,ImageUrl="boursin.jpg"}
+                  new Cheese { Name = "Boursin", Type = "Soft", Description = "A French cheese flavored with herbs and spices, known for its creamy texture.", Strength = "Mild", Price = 11.99m ,ImageUrl="Boursin.jpg"}
                  ];
          }
      

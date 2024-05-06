@@ -1,0 +1,74 @@
+﻿@inject ShoppingCart ShoppingCart
+@inject NavigationManager NavigationManager
+@inject ProtectedSessionStorage ProtectedSessionStorage
+
+<div>
+    <table class=" table" style="background-colour: red; verticle-allign:middle;">
+        <thead>
+            <tr> 
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                @if (IsEditable)
+                {
+                    <th scope="col">Actions</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in ShoppingCart.GetItems())
+            {
+                <tr>
+                    <td scope="col">@item.Cheese.Name</td>
+                    <td scope="col">@item.Cheese.Price.ToString("C")</td>
+                    <td scope="col">@(item.Quantity*100)g</td>
+                    <td scope="col">@item.Total.ToString("C")</td>
+                    @if (IsEditable)
+                    {
+                        <td scope="col">
+                            <button class="btn btn-success mt-1 mt-md-0" @onclick="() => IncreaseQuantity(item)">+</button>
+                            <button class="btn btn-primary mt-1 mt-md-0" @onclick="() => DecreaseQuantity(item)">-</button>
+                            <button class="btn btn-danger mt-1 mt-md-0" @onclick="() => RemoveItem(item)">Delete</button>
+                        </td>
+                    }
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code
+{
+    [Parameter]
+    public bool IsEditable { get; set; } = false; 
+
+    protected override void OnInitialized()
+    {
+        ShoppingCart.OnCartUpdated += async () => await CartUpdated();
+    }
+
+    private async Task CartUpdated()
+    {
+        StateHasChanged();
+        await ProtectedSessionStorage.SetAsync("cart", ShoppingCart.GetItems());
+    }
+
+    private void AddQuantity(CartItem item)
+    {
+        ShoppingCart.AddItem(item.Cheese, 1);
+    }
+   
+    
+    private void RemoveItem(CartItem item)
+    {
+        ShoppingCart.RemoveItem(item.Cheese);
+    }
+
+   
+    private void RemoveQuantity(CartItem item)
+    {
+        ShoppingCart.RemoveItem(item.Cheese, 1);
+    }
+}

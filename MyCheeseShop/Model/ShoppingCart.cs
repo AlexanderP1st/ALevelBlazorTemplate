@@ -41,7 +41,20 @@
             var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
             return item?.Quantity ?? 0;
         }
-        
-
+        public void RemoveItem(Cheese cheese)
+        {
+            _items.RemoveAll(item => item.Cheese.Id == cheese.Id);
+            OnCartUpdated?.Invoke();
+        }
+        public void RemoveItem(Cheese cheese, int quantity)
+        {
+            var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
+            if (item is not null)
+            {
+                item.Quanitity -= quantity;
+                if (item.Quanitity <= 0)
+                    _items.Remove(item);
+            }
+        }
     }
 }
