@@ -22,7 +22,7 @@
                 <tr>
                     <td scope="col">@item.Cheese.Name</td>
                     <td scope="col">@item.Cheese.Price.ToString("C")</td>
-                    <td scope="col">@(item.Quantity*100)g</td>
+                    <td scope="col">@(item.Quantity * 100)g</td>
                     <td scope="col">@item.Total.ToString("C")</td>
                     @if (IsEditable)
                     {
@@ -59,15 +59,20 @@
     {
         ShoppingCart.AddItem(item.Cheese, 1);
     }
-   
-    
+
+    private void IncreaseQuantity(CartItem item)
+    {
+        ShoppingCart.AddItem(item.Cheese, 1);
+    }
+
+
     private void RemoveItem(CartItem item)
     {
         ShoppingCart.RemoveItem(item.Cheese);
     }
 
    
-    private void RemoveQuantity(CartItem item)
+    private void DecreaseQuantity(CartItem item)
     {
         ShoppingCart.RemoveItem(item.Cheese, 1);
     }

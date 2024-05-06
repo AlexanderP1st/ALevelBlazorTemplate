@@ -51,8 +51,8 @@
             var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);
             if (item is not null)
             {
-                item.Quanitity -= quantity;
-                if (item.Quanitity <= 0)
+                item.Quantity -= quantity;
+                if (item.Quantity <= 0)
                     _items.Remove(item);
             }
         }
