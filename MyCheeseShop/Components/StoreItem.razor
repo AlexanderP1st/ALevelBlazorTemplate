@@ -10,18 +10,18 @@
 
 
  
- <div class="row"> 
+ <div class="row h-100"> 
     <div class="card" style="width: 22rem;">
-      <img src="img/@Cheese.ImageUrl" class="card-img-top p-1 " alt="@Cheese.Name">
+      <img src="img/@Cheese.ImageUrl" class="card-img-top p-1"  alt="@Cheese.Name" style="border : dashed; border-color : yellow;">
 
         <div class="card-body">
            <h5>
                     <span class="badge rounded-pill text-bg-danger">@Cheese.Type</span>
-                    <span class="badge rounded-pill text-bg-success">@Cheese.Strength</span>
+                    <span class="badge rounded-pill text-bg-warning">@Cheese.Strength</span>
             </h5>
                 
                 <h3 class="card-title">@Cheese.Name</h3>
-                <h5><span class="badge rounded-pill text-bg-danger">£@Cheese.Price</span></h5>
+                <h5><span class="badge rounded-pill text-bg-warning">£@Cheese.Price</span></h5>
                 <p class="card-text">@Cheese.Description</p>
                 <div class="mt-auto">
                 <EditForm Model="quantity" OnSubmit="AddToCart">
@@ -35,11 +35,11 @@
                             </InputSelect>
                         </div> 
                         <div class="col-lg-6 col-12 mt-lg-0 mt-1">
-                            <button class="btn btn-outline-danger position-relative w-100">
+                            <button class="btn btn-outline-warning position-relative w-100">
                                 Add to cart
                                 @if (ShoppingCart.GetQuantity(Cheese) > 0)
                                 {
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+                                    <span class="btn btn-warning position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
                                         @(ShoppingCart.GetQuantity(Cheese) * 100)g
                                         <span class="visually-hidden">@Cheese.Name in shopping cart</span>
                                     </span>

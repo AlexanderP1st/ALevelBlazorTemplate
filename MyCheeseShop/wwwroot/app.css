@@ -29,7 +29,6 @@ h1:focus {
 }
 
 
-body
-{
-    background-color: #bb1010;
+body{
+    background-color: darkred !important;
 }

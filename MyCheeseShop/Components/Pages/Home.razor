@@ -10,8 +10,16 @@
 
 
 
+
 <div>
     <input type="text" class="form-control" placeholder="Search" @bind="searchTerm" @bind:event="oninput" />
+</div>
+
+<div>
+    <div class="card-body bg-secondary d-flex flex column">
+        <img src="~/img/AP.png"  alt="AP" style="="max-height:100%; max width:100%/>
+    </div>
+ 
 </div>
 
 <br />
@@ -26,7 +34,7 @@ else if (!cheeses.Any())
 }
 
 
- <a @onclick="GoToCart" class="btn btn-outline-danger">Go To Cart (@ShoppingCart.Count())</a>
+ <a @onclick="GoToCart" class="btn btn-outline-warning">Go To Cart (@ShoppingCart.Count())</a>
  
 
 
