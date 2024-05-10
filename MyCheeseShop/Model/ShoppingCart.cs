@@ -55,6 +55,13 @@
                 if (item.Quantity <= 0)
                     _items.Remove(item);
             }
+
+        }
+
+        public void SetItems(IEnumerable<CartItem> items)
+        {
+            _items = items.ToList();
+            OnCartUpdated?.Invoke();
         }
     }
 }

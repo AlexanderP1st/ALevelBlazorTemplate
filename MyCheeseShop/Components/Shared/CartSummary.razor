@@ -2,36 +2,36 @@
 @inject NavigationManager NavigationManager
 @inject ProtectedSessionStorage ProtectedSessionStorage
 
+<title>Shopping Cart</title>
+
 <div>
-    <table class=" table" style="background-colour: red; verticle-allign:middle;">
+    <table class=" table" style="table table-dark verticle-allign:middle;">
         <thead>
             <tr> 
+             
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Total</th>
-                @if (IsEditable)
-                {
-                    <th scope="col">Actions</th>
-                }
+                <th scope="col">Change</th>
+            
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             @foreach(var item in ShoppingCart.GetItems())
             {
                 <tr>
+                   
                     <td scope="col">@item.Cheese.Name</td>
                     <td scope="col">@item.Cheese.Price.ToString("C")</td>
                     <td scope="col">@(item.Quantity * 100)g</td>
                     <td scope="col">@item.Total.ToString("C")</td>
-                    @if (IsEditable)
-                    {
-                        <td scope="col">
-                            <button class="btn btn-success mt-1 mt-md-0" @onclick="() => IncreaseQuantity(item)">+</button>
-                            <button class="btn btn-primary mt-1 mt-md-0" @onclick="() => DecreaseQuantity(item)">-</button>
+                    <td scope="col">
+                            <button class="btn btn-outline-success mt-1 mt-md-0" @onclick="() => IncreaseQuantity(item)">+</button>
+                            <button class="btn btn-outline-warning mt-1 mt-md-0" @onclick="() => DecreaseQuantity(item)">-</button>
                             <button class="btn btn-danger mt-1 mt-md-0" @onclick="() => RemoveItem(item)">Delete</button>
-                        </td>
-                    }
+                    </td>
+                   
 
                 </tr>
             }
