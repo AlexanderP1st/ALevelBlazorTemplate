@@ -4,6 +4,7 @@ using MyCheeseShop.Context;
 using MyCheeseShop.Model;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ShoppingCart>();
@@ -12,10 +13,13 @@ builder.Services.AddScoped<CheeseProvider>();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+
+
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
+
 
 builder.Services.AddAuthentication(options =>
 {
@@ -25,6 +29,7 @@ builder.Services.AddAuthentication(options =>
 .AddIdentityCookies();
 
 builder.Services.AddDbContext<DatabaseContext>();
+builder.Services.AddScoped<OrderProvider>();
 
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()

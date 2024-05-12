@@ -1,25 +1,26 @@
 ﻿using MyCheeseShop.Model;
-using SQLitePCL;
+using Microsoft.EntityFrameworkCore;
 namespace MyCheeseShop.Context
 {
-   
-    builder.Services.AddScope<OrderProvider>();
+
+
     public async Task CreateOrder(User user, IEnumerable<CartItem> items)
     {
+        // Create a new order
         var order = new Order
         {
             User = user,
-            Items = items.Select(items => new OrderItem
+            Items = items.Select(item => new OrderItem
             {
-                Cheese = items.Cheese,
-                Quantity = items.Quantity,
+                Cheese = item.Cheese,
+                Quantity = item.Quantity,
             }).ToList(),
-            Created = System.Data.DataSetDateTime.Now,
+            Created = DateTime.Now,
             Status = OrderStatus.Placed
         };
 
+        // Add the order to the database
         _context.Orders.Add(order);
-        await _context.SaveChangesAsync(); 
-
-    }    
+        await _context.SaveChangesAsync();
+    }
 }
