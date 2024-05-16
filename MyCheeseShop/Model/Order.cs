@@ -15,5 +15,10 @@ namespace MyCheeseShop.Model
         public OrderStatus Status {get; set;}
 
         public decimal Total => Items.Sum(item => item.Cheese.Price * item.Quantity);
-     }
+
+        public static implicit operator Order(Order v)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
