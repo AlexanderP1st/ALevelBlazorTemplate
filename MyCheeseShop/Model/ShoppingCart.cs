@@ -46,6 +46,12 @@
             _items.RemoveAll(item => item.Cheese.Id == cheese.Id);
             OnCartUpdated?.Invoke();
         }
+
+        public void Clear()
+        {
+            _items.Clear();
+            OnCartUpdated?.Invoke();
+        }
         public void RemoveItem(Cheese cheese, int quantity)
         {
             var item = _items.FirstOrDefault(item => item.Cheese.Id == cheese.Id);

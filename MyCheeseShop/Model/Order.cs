@@ -10,15 +10,12 @@ namespace MyCheeseShop.Model
 
         public List<OrderItem> Items {get; set;}
 
-        public DataSetDateTime Created {get; set;}
+        public DateTime Created {get; set;}
 
         public OrderStatus Status {get; set;}
 
         public decimal Total => Items.Sum(item => item.Cheese.Price * item.Quantity);
 
-        public static implicit operator Order(Order v)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

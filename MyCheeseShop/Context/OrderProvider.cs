@@ -5,7 +5,7 @@ namespace MyCheeseShop.Context
 {
     public class OrderProvider
     {
-
+        private readonly DatabaseContext _context; 
         public async Task CreateOrder(User user, IEnumerable<CartItem> items)
         {
             // Create a new order

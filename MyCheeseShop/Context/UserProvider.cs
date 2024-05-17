@@ -6,9 +6,13 @@ namespace MyCheeseShop.Context
 {
     public class UserProvider
     {
+        private readonly DatabaseContext _context;
+        private readonly UserManager<User> _userManager;
         public User? GetUserByUsername(string? username)
         {
-            return 
+            //return the user with the specified username
+            return _context.Users.FirstOrDefault(user => user.UserName == username);
+
         }
 
     }

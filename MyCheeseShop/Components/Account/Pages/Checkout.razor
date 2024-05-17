@@ -1,0 +1,52 @@
+﻿@inject UserProvider UserProvider
+@inject OrderProvider OrderProvider
+@inject ShoppingCart ShoppingCart
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject ProtectedSessionStorage ProtectedSessionStore
+@attribute [Authorize]
+
+<EditForm EditContext="editContext" OnValidSubmit="MakePayment"> 
+    <DataAnnotationsValidator />
+
+</EditForm>
+
+@code {
+    private User user;
+    private PaymentDetails paymentDetails;
+    private EditContext editContext;
+    private bool isPaying; 
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var username = authState!.User!.Identity!.Name!;
+        user = UserProvider.GetUserByUsername(username)!;
+    }
+
+    private async Task MakePayment()
+    {
+        await SimulatePayment();
+
+        await OrderProvider.CreateOrder(user, ShoppingCart.GetItems());
+        ShoppingCart.Clear();
+        NavigationManager.NavigateTo("/thank-you");
+    }
+
+    private async Task SimulatePayment()
+    {
+        
+    }
+
+    private sealed class PaymentDetails
+    {
+        [Required]
+        public string NameOnCard { get; set; }
+        [Required]
+        public string CardNumber { get; set; }
+        [Required]
+        public string ExpiryDate { get; set; }
+        [Required]
+        public string SecurityCode { get; set; }
+    }
+}
