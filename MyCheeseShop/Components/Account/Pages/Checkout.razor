@@ -6,9 +6,18 @@
 @inject ProtectedSessionStorage ProtectedSessionStore
 @attribute [Authorize]
 
+<PageTitle>Checkout</PageTitle>
+<h3> Checkout</h3>
+<div class="card mb-1"> 
+    <div class="card-body bg-light">
+        <h4 class="card-title">Order Summary</h4>
+        <CartSummary/>
+    </div>
+</div>
+
 <EditForm EditContext="editContext" OnValidSubmit="MakePayment"> 
     <DataAnnotationsValidator />
-
+     
 </EditForm>
 
 @code {
@@ -27,6 +36,7 @@
     private async Task MakePayment()
     {
         await SimulatePayment();
+
 
         await OrderProvider.CreateOrder(user, ShoppingCart.GetItems());
         ShoppingCart.Clear();

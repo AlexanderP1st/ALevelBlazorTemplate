@@ -18,31 +18,36 @@
 <PageTitle>Register</PageTitle>
 <StatusMessage Message="@statusMessage" IsError="@isError" />
 
-<div class="card">
-    <div class="card-body bg-light">
-        <h4 class="card-title">Register</h4>
-
-        <EditForm OnValidSubmit="RegisterUser" Model="Model" FormName="registerForm">
+ <EditForm OnValidSubmit="RegisterUser" Model="Model" FormName="registerForm">
+     <DataAnnotationsValidator />
             <div class="row g-3">
-                <div class="col-md-12">
-                    <label for="email" class="form-label">Email</label>
-                    <InputText class="form-control" placeholder="Email" @bind-Value="Model.Email" />
+                <div class="form-group mb-2">
+                    <label for="firstname">First Name</label>
+                    <InputText id="firstname" class="form-control" placeholder="First Name" @bind-Value="Model.FirstName"/>
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.FirstName)" />
+                   </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="password" class="form-label">Password</label>
-                    <InputText type="password" class="form-control" placeholder="Password" @bind-Value="Model.Password" />
+           
+                <div class="form-group mb-2">
+                   <label for="lastname">Last Name</label>
+                   <InputText id="lastname" class="form-control" placeholder="Last Name" @bind-Value="Model.LastName" />
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.LastName)" />
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="name" class="form-label">Confirm Password</label>
-                    <InputText type="password" class="form-control" placeholder="Confirm Password" @bind-Value="Model.ConfirmPassword" />
+                <div class="form-group mb-2">
+                   <label for="firstname">First Name</label>
+                   <InputText id="firstname" class="form-control" placeholder="First Name" @bind-Value="Model.FirstName" />
+                    <div class="small">
+                       <ValidationMessage For="@(() => Model!.FirstName)" />
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
-                </div>
-            </div>
+   
+           </div>
         </EditForm>
-    </div>
-</div>
+
+
 
 @code {
     private IEnumerable<IdentityError>? identityErrors;
@@ -63,6 +68,7 @@
                 UserName = Model.Email,
                 Email = Model.Email,
                 FirstName = Model.FirstName,
+
                 LastName = Model.LastName,
                 Address = Model.Address,
                 City = Model.City,
