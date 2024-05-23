@@ -20,8 +20,8 @@
 
  <EditForm OnValidSubmit="RegisterUser" Model="Model" FormName="registerForm">
      <DataAnnotationsValidator />
-            <div class="row g-3">
-                <div class="form-group mb-2">
+            <div class="card g-3">
+                <div class="form-group md-2">
                     <label for="firstname">First Name</label>
                     <InputText id="firstname" class="form-control" placeholder="First Name" @bind-Value="Model.FirstName"/>
                     <div class="small">
@@ -29,23 +29,66 @@
                    </div>
                 </div>
            
-                <div class="form-group mb-2">
+                <div class="form-group md-2">
                    <label for="lastname">Last Name</label>
                    <InputText id="lastname" class="form-control" placeholder="Last Name" @bind-Value="Model.LastName" />
                     <div class="small">
                         <ValidationMessage For="@(() => Model!.LastName)" />
                     </div>
                 </div>
-                <div class="form-group mb-2">
-                   <label for="firstname">First Name</label>
-                   <InputText id="firstname" class="form-control" placeholder="First Name" @bind-Value="Model.FirstName" />
+                <div class="form-group md-2">
+                   <label for="city">City</label>
+                   <InputText id="city" class="form-control" placeholder="City" @bind-Value="Model.City" />
                     <div class="small">
-                       <ValidationMessage For="@(() => Model!.FirstName)" />
+                       <ValidationMessage For="@(() => Model!.City)" />
                     </div>
-                </div>
+                 </div>
+                 <div class="form-group md-2">
+                      <label for="street">Street</label>
+                      <InputText id="street" class="form-control" placeholder="Street" @bind-Value="Model.Address" />
+                      <div class="small">
+                           <ValidationMessage For="@(() => Model!.Address)" />
+                      </div>
+                 </div>
+                 <div class="form-group mb-2">
+                      <label for="postcode">Postcode</label>
+                      <InputText id="postcode" class="form-control" placeholder="Postcode" @bind-Value="Model.PostCode" />
+                      <div class="small">
+                         <ValidationMessage For="@(() => Model!.PostCode)" />
+                      </div>
+                 </div>
    
            </div>
         </EditForm>
+
+        <div class="col-lg-6 col-12 mt-1">
+            <div class="="card h-100"> 
+                <h5 class="card-title">Login details</h5>
+
+               <div class="form-group mv-2">
+                    <label for="email">Email</label>
+                    <InputText id="email" class="form-control" placeholder="you@example.com" @bind-Value="Model.Email"/>
+                    <div class="small">
+                        <ValidationMessage For="@(() => Model!.Email)" />
+                        
+                    </div>
+               </div>
+                <div class="form-group mb-2">
+                    <label for="password">Password</label>
+                    <InputText id="password" class="form-control" placeholder="Password" @bind-Value="Model.Password" />
+                    <div class="small">
+                         <ValidationMessage For="@(() => Model!.Password)" />
+                    </div>
+                </div>
+                 <div class="form-group mb-2">
+                    <label for="confirm">Confirm Password</label>
+                    <InputText id="confirm" class="form-control" placeholder="Confirm Password" @bind-Value="Model.ConfirmPassword" />
+                    <div class="small">
+                         <ValidationMessage For="@(() => Model!.ConfirmPassword)" />
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

@@ -16,13 +16,10 @@
             var items = results.Success ? results.Value : null;
             if( items is not null && items.Any())
             {
-                items.ForEach(items =>
+                items.ForEach(async item =>
                 {
-                    var existing = DatabaseContext.Cheeses.Local.FirstOrDefault(cheese => cheese.Id == items.Cheese.Id);
-                    if (existing == null)
-                    {
-                        DatabaseContext.Cheeses.Attach(items.Cheese);
-                    }
+                    item.Cheese = await DatabaseContext.Cheeses.FindAsync(item.Cheese.Id); 
+                
                 });
                 ShoppingCart.SetItems(items); 
 
