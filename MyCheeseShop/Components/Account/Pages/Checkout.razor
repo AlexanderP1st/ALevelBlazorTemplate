@@ -1,30 +1,68 @@
-﻿@inject UserProvider UserProvider
+﻿@page "/checkout"
+@attribute [Authorize]
+@inject UserProvider UserProvider
 @inject OrderProvider OrderProvider
 @inject ShoppingCart ShoppingCart
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
 @inject ProtectedSessionStorage ProtectedSessionStore
-@attribute [Authorize]
+
 
 <PageTitle>Checkout</PageTitle>
+
 <h3> Checkout</h3>
 <div class="card mb-1"> 
     <div class="card-body bg-light">
         <h4 class="card-title">Order Summary</h4>
-        <CartSummary/>
+        <CartSummary />
     </div>
 </div>
 
 <EditForm EditContext="editContext" OnValidSubmit="MakePayment"> 
     <DataAnnotationsValidator />
-     
+     <h4 class="card h-100">Customer</h4>
+       <div class="form-group mb-1">
+         <label class="form-label">Name</label>
+         <input class="form-control" value="@GetFormattedName(user)" disabled />
+       </div>
+       <div class="form-group mb-1">
+           <label class="form-label">Address</label>
+           <textarea class="form-control" rows="3" style="resize: none" value="@GetFormattedAddress(user)" disabled />
+       </div>
+      <div class="col-lg-6 col 12 mt-lg-1 mt-2">
+         <div class="form-group mb-1">
+           <label class="form-label">Name on Card</label>
+           <InputText class="form-control" placeholder="@GetFormattedName(user)" @bind-Value="paymentDetails.NameOnCard"/>
+         </div>
+       
+
+         <div class="form-group mb-1">
+           <label class="form-label">Card Number</label>
+           <InputText class="form-control" placeholder="0000-0000-0000-0000" @bind-Value="paymentDetails.CardNumber" />
+         </div>
+
+        <div class="form-group mb-1">
+          <label class="form-label">Expiry Date</label>
+          <InputText class="form-control" placeholder="12/23" @bind-Value="paymentDetails.ExpiryDate" />
+        </div>
+
+        <div class="form-group mb-1">
+          <label class="form-label">Security Code</label>
+          <InputText class="form-control" placeholder="123" @bind-Value="paymentDetails.SecurityCode" />
+        </div>
+      </div>
 </EditForm>
 
 @code {
     private User user;
     private PaymentDetails paymentDetails;
     private EditContext editContext;
-    private bool isPaying; 
+    private bool isPaying;
+
+    private void GoToCart()
+    {
+        NavigationManager.NavigateTo("/cart");   
+    }
 
     protected override async Task OnInitializedAsync()
     {
@@ -45,7 +83,17 @@
 
     private async Task SimulatePayment()
     {
-        
+
+    }
+
+    private string GetFormattedName(User user)
+    {
+        return $"{user.Address}{Environment.NewLine}{user.City}{Environment.NewLine}{user.PostCode}";
+    }
+
+    private string GetFormattedAddress(User user)
+    {
+        return $"{user.Address}{Environment.NewLine}{user.City}{Environment.NewLine}{user.PostCode}";
     }
 
     private sealed class PaymentDetails
