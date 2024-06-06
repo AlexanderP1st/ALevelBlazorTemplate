@@ -1,4 +1,5 @@
 ﻿@page "/checkout"
+@using MyCheeseShop.Components.Shared
 @attribute [Authorize]
 @inject UserProvider UserProvider
 @inject OrderProvider OrderProvider
@@ -10,7 +11,7 @@
 
 <PageTitle>Checkout</PageTitle>
 
-<h3> Checkout</h3>
+<h4 class="text-warning">Checkout</h4>
 <div class="card mb-1"> 
     <div class="card-body bg-light">
         <h4 class="card-title">Order Summary</h4>
@@ -20,7 +21,8 @@
 
 <EditForm EditContext="editContext" OnValidSubmit="MakePayment"> 
     <DataAnnotationsValidator />
-     <h4 class="card h-100">Customer</h4>
+    <h4 class="text-warning">Customer</h4>
+     <div class= "card" style="width: 80rem;">
        <div class="form-group mb-1">
          <label class="form-label">Name</label>
          <input class="form-control" value="@GetFormattedName(user)" disabled />
@@ -51,6 +53,7 @@
           <InputText class="form-control" placeholder="123" @bind-Value="paymentDetails.SecurityCode" />
         </div>
       </div>
+   </div>
 </EditForm>
 
 @code {
@@ -66,9 +69,13 @@
 
     protected override async Task OnInitializedAsync()
     {
+        paymentDetails = new PaymentDetails();
+        editContext = new EditContext(paymentDetails);
         var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         var username = authState!.User!.Identity!.Name!;
         user = UserProvider.GetUserByUsername(username)!;
+
+
     }
 
     private async Task MakePayment()
@@ -88,7 +95,7 @@
 
     private string GetFormattedName(User user)
     {
-        return $"{user.Address}{Environment.NewLine}{user.City}{Environment.NewLine}{user.PostCode}";
+        return $"{user.FirstName} {user.LastName:astName}";
     }
 
     private string GetFormattedAddress(User user)
